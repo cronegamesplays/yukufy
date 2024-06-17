@@ -1,0 +1,36 @@
+{
+  "name": "distify",
+  "version": "1.1.5",
+  "description": "Uma API Player feita com Node.js, usando Spotify e SoundCloud como mecanismo de pesquisa e stream.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "music",
+    "song",
+    "discord",
+    "bot",
+    "spotify",
+    "soundcloud",
+    "stream",
+    "player"
+  ],
+  "author": "cronegamesplays",
+  "license": "ISC",
+  "dependencies": {
+    "@discord-player/extractor": "^4.4.7",
+    "@discordjs/voice": "^0.17.0",
+    "@types/node": "^18.0.6",
+    "axios": "^1.7.2",
+    "discord-player": "^6.6.10",
+    "discord.js": "^14.15.3",
+    "ffmpeg-static": "^5.2.0",
+    "libsodium-wrappers": "^0.7.13",
+    "opusscript": "^0.0.8",
+    "semver": "^7.6.2",
+    "soundcloud-downloader": "^1.0.0",
+    "soundcloud-scraper": "^5.0.3",
+    "spotify-web-api-node": "^5.0.2"
+  }
+}
