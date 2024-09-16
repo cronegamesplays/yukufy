@@ -26,7 +26,7 @@ function convertMsToMinutesSeconds(ms) {
   return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-class DistifyClient extends EventEmitter {
+class YukufyClient extends EventEmitter {
   constructor(client, { configApi, configPlayer }) {
     super();
     this.client = client;
@@ -495,5 +495,5 @@ class DistifyClient extends EventEmitter {
 }
 
 module.exports = {
-  DistifyClient
+  YukufyClient
 };
