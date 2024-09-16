@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://nodei.co/npm/distify.js/"><img src="https://nodei.co/npm/distify.js.png"></a>
+  <a href="https://nodei.co/npm/yukufy/"><img src="https://nodei.co/npm/yukufy.png"></a>
 </p>
 
 <div align="center">
@@ -12,17 +12,17 @@
   <a href="https://discord.gg/wV2WamExr5">
     <img src="https://img.shields.io/discord/1168782531097800814?color=333&label=Support&logo=discord&style=for-the-badge" alt="Discord">
   </a>
-  <a href="https://www.npmjs.com/package/distify.js">
-    <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/distify.js?style=for-the-badge&logo=npm&color=333">
+  <a href="https://www.npmjs.com/package/yukufy">
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/yukufy?style=for-the-badge&logo=npm&color=333">
   </a>
-  <a href="https://www.npmjs.com/package/distify.js">
-    <img alt="NPM Version" src="https://img.shields.io/npm/v/distify.js?style=for-the-badge&logo=npm&color=333">
+  <a href="https://www.npmjs.com/package/yukufy">
+    <img alt="NPM Version" src="https://img.shields.io/npm/v/yukufy?style=for-the-badge&logo=npm&color=333">
   </a>
-  <a href="https://github.com/cronegamesplays/distifyjs">
-    <img alt="GitHub forks" src="https://img.shields.io/github/forks/cronegamesplays/distifyjs?style=for-the-badge&logo=github&color=333">
+  <a href="https://github.com/cronegamesplays/yukufy">
+    <img alt="GitHub forks" src="https://img.shields.io/github/forks/cronegamesplays/yukufy?style=for-the-badge&logo=github&color=333">
   </a>
-  <a href="https://github.com/cronegamesplays/distifyjs">
-    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/cronegamesplays/distifyjs?style=for-the-badge&logo=github&color=333">
+  <a href="https://github.com/cronegamesplays/yukufy">
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/cronegamesplays/yukufy?style=for-the-badge&logo=github&color=333">
   </a>
   <a href="https://github.com/sponsors/cronegamesplays">
     <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/cronegamesplays?style=for-the-badge&logo=github&color=333">
@@ -30,9 +30,9 @@
   <hr>
 </div>
 
-# Distify.js
+# Yukufy
 
-`Distify.js` is a Node.js library designed for managing music playback in Discord servers. It allows you to search, play, pause, resume, skip tracks, stop playback, adjust volume, and fetch lyrics from Spotify and SoundCloud.
+`Yukufy` is a Node.js library designed for managing music playback in Discord servers. It allows you to search, play, pause, resume, skip tracks, stop playback, adjust volume, and fetch lyrics from Spotify and SoundCloud.
 
 ## 📃 Documentation
 Explore the full [documentation here](#).
@@ -49,23 +49,23 @@ Explore the full [documentation here](#).
 
 ## 🛠️ Installation
 
-Install `Distify.js` via npm:
+Install `Yukufy` via npm:
 
 ```bash
-npm install distify.js
+npm install yukufy
 ```
 
 ## 🛠️ Setup
 
-To use `Distify.js`, initialize the `DistifyClient` with your Spotify credentials and player options.
+To use `Yukufy`, initialize the `YukufyClient` with your Spotify credentials and player options.
 
 ```js
 const { Client, GatewayIntentBits } = require('discord.js');
-const { DistifyClient } = require('distify.js');
+const { YukufyClient } = require('yukufy');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildMessages] });
 
-const distify = new DistifyClient(client, {
+const yukufy = new YukufyClient(client, {
   // Spotify API configuration
   configApi: {
     clientId: 'YOUR_SPOTIFY_CLIENT_ID',
@@ -96,7 +96,7 @@ You can search for songs from Spotify or SoundCloud using the `search` method.
 ```js
 const query = "NEFFEX Fight Back";
 const source = "spotify"; // or "soundcloud"
-const tracks = await distify.search(query, source);
+const tracks = await yukufy.search(query, source);
 console.log(tracks);
 ```
 
@@ -107,7 +107,7 @@ To play a song, specify the song name and the voice channel.
 const channel = interaction.member.voice.channel;
 const query = "NEFFEX Michael Jordan";
 const source = "spotify"; // or "soundcloud"
-await distify.play(query, channel, source);
+await yukufy.play(query, channel, source);
 ```
 
 ### Control the Player
@@ -115,39 +115,39 @@ await distify.play(query, channel, source);
 - #### Pause Music:
 
 ```js
-distify.pause();
+yukufy.pause();
 ```
 
 - #### Resume Music:
 
 ```js
-distify.resume();
+yukufy.resume();
 ```
 
 - #### Skip to Next Song:
 
 ```js
-distify.skip();
+yukufy.skip();
 ```
 
 - #### Stop Playback:
 
 ```js
-distify.stop();
+yukufy.stop();
 ```
 
 - #### Adjust Volume:
 
 ```js
 const volume = 50; // Volume level between 0 and 100
-distify.setVolume(volume);
+yukufy.setVolume(volume);
 ```
 
 - #### Get Lyrics
 To fetch lyrics for the current song or a specific song:
 
 ```js
-const lyrics = await distify.lyrics("NEFFEX Fight Back");
+const lyrics = await yukufy.lyrics("NEFFEX Fight Back");
 console.log(lyrics);
 ```
 
@@ -171,12 +171,12 @@ The bot supports various slash commands. Here’s how you can use them:
 
 ## Events
 
-Distify.js also emits various events that you can listen to:
+Yukufy also emits various events that you can listen to:
 
 - `playSong`: Fired when a song starts playing.
 
 ```js
-distify.on('playSong', ({ track }) => {
+yukufy.on('playSong', ({ track }) => {
   console.log(`Now playing: ${track.title} by ${track.artist}`);
 });
 ```
@@ -184,7 +184,7 @@ distify.on('playSong', ({ track }) => {
 - `addSong`: Fired when a song is added to the queue.
 
 ```js
-distify.on('addSong', ({ track }) => {
+yukufy.on('addSong', ({ track }) => {
   console.log(`Song added to queue: ${track.title} by ${track.artist}`);
 });
 ```
@@ -192,7 +192,7 @@ distify.on('addSong', ({ track }) => {
 - `finishQueue`: Fired when the queue finishes.
 
 ```js
-distify.on('finishQueue', () => {
+yukufy.on('finishQueue', () => {
   console.log('Music queue finished.');
 });
 ```
@@ -200,7 +200,7 @@ distify.on('finishQueue', () => {
 - `emptyQueue`: Fired when the queue becomes empty.
 
 ```js
-distify.on('emptyQueue', () => {
+yukufy.on('emptyQueue', () => {
   console.log('Queue is empty.');
 });
 ```
@@ -208,7 +208,7 @@ distify.on('emptyQueue', () => {
 - `clientDisconnect`: Fired when the client disconnects from the voice channel.
 
 ```js
-distify.on('clientDisconnect', () => {
+yukufy.on('clientDisconnect', () => {
   console.log('Disconnected from voice channel.');
 });
 ```
@@ -216,16 +216,16 @@ distify.on('clientDisconnect', () => {
 - `playerError`: Fired when there is an error in the player.
 
 ```js
-distify.on('playerError', (error) => {
+yukufy.on('playerError', (error) => {
   console.error('Player error:', error);
 });
 ```
 
-## Distify.js Example Usage
+## Yukufy Example Usage
 
 ```js
 const { Client, GatewayIntentBits, InteractionType, REST, Routes } = require('discord.js');
-const { DistifyClient } = require('distify.js');
+const { YukufyClient } = require('../utils/Player');
 
 // Create a new Discord client instance with specified intents
 const client = new Client({
@@ -236,8 +236,8 @@ const client = new Client({
   ]
 });
 
-// Initialize the DistifyClient with configuration for API and player
-const distify = new DistifyClient(client, {
+// Initialize the YukufyClient with configuration for API and player
+const yukufy = new YukufyClient(client, {
   configApi: {
     clientId: "YourSpotifyClientId",
     clientSecret: "YourSpotifyClientSecret"
@@ -248,9 +248,6 @@ const distify = new DistifyClient(client, {
     leaveOnEmptyQueueCooldown: 10000
   }
 });
-
-// Your Discord bot token
-const clientToken = "YourBotToken";
 
 // Define the slash commands for the bot
 const commands = [
@@ -357,7 +354,7 @@ const commands = [
 ];
 
 // Initialize REST API with the bot token
-const rest = new REST({ version: '10' }).setToken(clientToken);
+const rest = new REST({ version: '10' }).setToken("TokenHere");
 
 async function main() {
   try {
@@ -398,7 +395,7 @@ async function main() {
         return;
       }
       try {
-        const music = await distify.play(song, channel, source, {
+        const music = await yukufy.play(song, channel, source, {
           member: interaction.member,
           textChannel: interaction.channel,
           guildId: interaction.guild.id
@@ -423,25 +420,25 @@ async function main() {
 
     // Handle the 'stop' command
     if (commandName === 'stop') {
-      distify.stop();
+      yukufy.stop();
       await interaction.reply('🛑 Music stopped.');
     }
 
     // Handle the 'skip' command
     if (commandName === 'skip') {
-      distify.skip();
+      yukufy.skip();
       await interaction.reply('⏭️ Song skipped.');
     }
 
     // Handle the 'pause' command
     if (commandName === 'pause') {
-      distify.pause();
+      yukufy.pause();
       await interaction.reply('⏸️ Music paused.');
     }
 
     // Handle the 'resume' command
     if (commandName === 'resume') {
-      distify.resume();
+      yukufy.resume();
       await interaction.reply('▶️ Music resumed.');
     }
 
@@ -449,7 +446,7 @@ async function main() {
     if (commandName === 'volume') {
       const volume = options.getNumber('number');
       try {
-        distify.setVolume(volume);
+        yukufy.setVolume(volume);
         await interaction.reply(`🔊 Volume set to: ${volume}`);
       } catch (error) {
         await interaction.reply('❌ Error adjusting volume');
@@ -462,7 +459,7 @@ async function main() {
       const query = options.getString('query');
       const source = options.getString('source');
       try {
-        const results = await distify.search(query, source);
+        const results = await yukufy.search(query, source);
         if (results && results.length > 0) {
           const searchResults = results.map((r, index) => `${index + 1}. **${r.title}** by **${r.artist}**`).join('\n');
           await interaction.reply(`🔍 Search results:\n${searchResults}`);
@@ -478,7 +475,7 @@ async function main() {
     // Handle the 'queue' command
     if (commandName === 'queue') {
       try {
-        const queue = await distify.getQueue();
+        const queue = await yukufy.getQueue();
         if (queue.length === 0) {
           await interaction.reply('The queue is empty.');
         } else {
@@ -501,7 +498,7 @@ async function main() {
       }
 
       try {
-        await distify.join(channel);
+        await yukufy.join(channel);
         await interaction.reply(`🔊 Joined the voice channel: ${channel.name}`);
       } catch (error) {
         await interaction.reply('❌ Error joining the voice channel');
@@ -512,7 +509,7 @@ async function main() {
     // Handle the 'leave' command
     if (commandName === 'leave') {
       try {
-        distify.leave(interaction.member.voice.channel.id);
+        yukufy.leave(interaction.member.voice.channel.id);
         await interaction.reply('👋 Left the voice channel.');
       } catch (error) {
         await interaction.reply('❌ Error leaving the voice channel');
@@ -523,7 +520,7 @@ async function main() {
     // Handle the 'loop' command
     if (commandName === 'loop') {
       try {
-        const loopOnOff = await distify.toggleLoop();
+        const loopOnOff = await yukufy.toggleLoop();
         const statusMessage = loopOnOff ? 'enabled' : 'disabled';
         await interaction.reply(`🔄 Loop is now ${statusMessage}`);
       } catch (error) {
@@ -534,7 +531,7 @@ async function main() {
 
     // Handle the 'nowplaying' command
     if (commandName === 'nowplaying') {
-      const nowPlaying = await distify.nowPlaying();
+      const nowPlaying = await yukufy.nowPlaying();
       if (nowPlaying) {
         const title = nowPlaying.title || 'Title not available';
         const artist = nowPlaying.artist || 'Artist not available';
@@ -557,7 +554,7 @@ async function main() {
         
         // If no query, try to get the currently playing song
         if (!query) {
-          const nowPlaying = await distify.nowPlaying();
+          const nowPlaying = await yukufy.nowPlaying();
           
           if (!nowPlaying) {
             return await interaction.reply('No song playing at the moment and no search query provided.');
@@ -571,7 +568,7 @@ async function main() {
         }
   
         // Search for the lyrics
-        const lyrics = await distify.lyrics(searchQuery);
+        const lyrics = await yukufy.lyrics(searchQuery);
   
         if (!lyrics) {
           return await interaction.reply('Lyrics not found.');
@@ -601,39 +598,59 @@ async function main() {
   });
 
   // Event fired when a song starts playing
-  distify.on('playSong', ({ track }) => {
+  yukufy.on('playSong', ({ track }) => {
     const { title, artist, url, duration, source, likes, thumbnail, member, textChannel, guildId } = track;
     textChannel.send(`🎶 Now playing: **${artist} - ${title}** added by **${member.displayName}**`);
   });
 
   // Event fired when a song is added to the queue
-  distify.on('addSong', ({ track }) => {
+  yukufy.on('addSong', ({ track }) => {
     const { title, artist, url, duration, source, likes, thumbnail, member, textChannel, guildId } = track;
     textChannel.send(`🎵 Song **${artist} - ${title}** added to queue by **${member.displayName}**`);
   });
 
   // Event fired when the queue finishes
-  distify.on('finishQueue', ({ track }) => {
+  yukufy.on('finishQueue', ({ track }) => {
     track.textChannel.send('🔚 Music queue finished.');
   });
 
   // Event fired when the queue becomes empty
-  distify.on('emptyQueue', ({ track }) => {
+  yukufy.on('emptyQueue', ({ track }) => {
     track.textChannel.send('I was waiting, no more songs were added to the queue, so I am leaving...');
   });
 
   // Event fired when the client disconnects from the voice channel
-  distify.on('clientDisconnect', () => {
+  yukufy.on('clientDisconnect', () => {
     console.log('👋 Disconnected from the voice channel.');
   });
 
   // Event fired when there is an error in the player
-  distify.on('playerError', () => {
+  yukufy.on('playerError', () => {
     console.log('Error');
   });
 
   // Log in to Discord with the bot token
-  await client.login(clientToken);
+  await client.login("TokenHere");
+
+  /* Uncomment this section for additional error handling
+  process.on("unhandledRejection", async (reason, promise) => {
+    console.log("[AntiCrash] | [UnhandledRejection_Logs] | [start] : ===============");
+    console.log("Unhandled Rejection at:", promise, "reason:", reason);
+    console.log("[AntiCrash] | [UnhandledRejection_Logs] | [end] : ===============");
+  });
+
+  process.on("uncaughtException", async (err, origin) => {
+    console.log("[AntiCrash] | [UncaughtException_Logs] | [Start] : ===============");
+    console.log(`Uncaught exception: ${err}\n` + `Exception origin: ${origin}`);
+    console.log("[AntiCrash] | [UncaughtException_Logs] | [End] : ===============");
+  });
+
+  process.on("uncaughtExceptionMonitor", async (err, origin) => {
+    console.log("[AntiCrash] | [UncaughtExceptionMonitor_Logs] | [Start] : ===============");
+    console.log(`Uncaught exception monitor: ${err}\n` + `Exception origin: ${origin}`);
+    console.log("[AntiCrash] | [UncaughtExceptionMonitor_Logs] | [End] : ===============");
+  });
+  */
 }
 
 // Start the main function and handle errors
@@ -652,4 +669,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 If you have any questions or need help, join our [Discord server](https://discord.gg/wV2WamExr5) for support and updates.
 
-Enjoy managing your Discord music experience with Distify.js!
+Enjoy managing your Discord music experience with Yukufy!
