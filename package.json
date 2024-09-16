@@ -1,0 +1,39 @@
+{
+  "name": "distify.js",
+  "version": "1.2.5",
+  "description": "A Player Package built with Node.js, using Spotify and SoundCloud as search and streaming engines, easy and simple to use for your bot.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [
+    "music",
+    "song",
+    "discord",
+    "bot",
+    "spotify",
+    "soundcloud",
+    "stream",
+	"track",
+    "player"
+  ],
+  "author": "cronegamesplays",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/voice": "^0.17.0",
+    "@types/node": "^18.0.6",
+    "axios": "^1.7.7",
+    "discord.js": "^14.15.3",
+    "events": "^3.3.0",
+    "ffmpeg-static": "^5.2.0",
+    "genius-lyrics": "^4.4.7",
+    "libsodium-wrappers": "^0.7.13",
+    "opus-decoder": "^0.7.6",
+    "opusscript": "^0.0.8",
+    "semver": "^7.6.2",
+    "soundcloud-downloader": "^1.0.0",
+    "soundcloud-scraper": "^5.0.3",
+    "spotify-web-api-node": "^5.0.2",
+    "yt-stream": "^1.7.4"
+  }
+}
