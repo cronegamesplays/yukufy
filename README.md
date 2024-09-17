@@ -47,10 +47,12 @@ Explore the full [documentation here](#).
 
 ### Note: This library is still under development and may contain bugs. Feel free to report issues or suggest features in our Discord!
 
-## > Yukufy Projects
-### - [Yukufy Bot Example](https://github.com/lNazuna/Yukufy-Bot-Example) by **lNazuna**
 
+## > Yukufy Projects
+
+### - [Yukufy Bot Example](https://github.com/lNazuna/Yukufy-Bot-Example) by **lNazuna**
 ### - [Yoruka](#) by **CroneGamesPlays**
+
 
 ## 🛠️ Installation
 
@@ -234,7 +236,7 @@ yukufy.on('playerError', (error) => {
 
 ```js
 const { Client, GatewayIntentBits, InteractionType, REST, Routes } = require('discord.js');
-const { YukufyClient } = require('../utils/Player');
+const { YukufyClient } = require('yukufy');
 
 // Create a new Discord client instance with specified intents
 const client = new Client({
@@ -257,6 +259,8 @@ const yukufy = new YukufyClient(client, {
     leaveOnEmptyQueueCooldown: 10000
   }
 });
+
+const clientToken = "YourBotToken";
 
 // Define the slash commands for the bot
 const commands = [
@@ -363,7 +367,7 @@ const commands = [
 ];
 
 // Initialize REST API with the bot token
-const rest = new REST({ version: '10' }).setToken("TokenHere");
+const rest = new REST({ version: '10' }).setToken(clientToken);
 
 async function main() {
   try {
@@ -371,7 +375,7 @@ async function main() {
 
     // Register the slash commands with Discord
     await rest.put(
-      Routes.applicationCommands("1216138439972491324"),
+      Routes.applicationCommands(client.user.id),
       { body: commands }
     );
 
@@ -441,14 +445,22 @@ async function main() {
 
     // Handle the 'pause' command
     if (commandName === 'pause') {
-      yukufy.pause();
-      await interaction.reply('⏸️ Music paused.');
+      const result = await yukufy.pause();
+      if (result.status === 'alreadyPaused') {
+        await interaction.reply('⏸️ Music is already paused.');
+        } else if (result.status === 'paused') {
+          await interaction.reply('⏸️ Music paused.');
+      }
     }
-
+    
     // Handle the 'resume' command
     if (commandName === 'resume') {
-      yukufy.resume();
-      await interaction.reply('▶️ Music resumed.');
+      const result = await yukufy.resume();
+      if (result.status === 'alreadyPlaying') {
+        await interaction.reply('▶️ Music is already playing.');
+        } else if (result.status === 'resumed') {
+          await interaction.reply('▶️ Music resumed.');
+      }
     }
 
     // Handle the 'volume' command
@@ -639,7 +651,7 @@ async function main() {
   });
 
   // Log in to Discord with the bot token
-  await client.login("TokenHere");
+  await client.login(clientToken);
 
   /* Uncomment this section for additional error handling
   process.on("unhandledRejection", async (reason, promise) => {
