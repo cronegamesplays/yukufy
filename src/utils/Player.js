@@ -349,16 +349,24 @@ class YukufyClient extends EventEmitter {
 
   async pause() {
     try {
+      if (this.player.state.status === 'paused') {
+        return { status: 'alreadyPaused' };
+      }
       this.player.pause();
+      return { status: 'paused' };
     } catch (error) {
       console.error('Error pausing song:', error);
       throw new Error('Error pausing song');
     }
   }
-
+  
   async resume() {
     try {
+      if (this.player.state.status === 'playing') {
+        return { status: 'alreadyPlaying' };
+      }
       this.player.unpause();
+      return { status: 'resumed' };
     } catch (error) {
       console.error('Error resuming song:', error);
       throw new Error('Error resuming song');
@@ -494,6 +502,4 @@ class YukufyClient extends EventEmitter {
   }
 }
 
-module.exports = {
-  YukufyClient
-};
+module.exports = { YukufyClient };

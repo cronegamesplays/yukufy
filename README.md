@@ -47,6 +47,11 @@ Explore the full [documentation here](#).
 
 ### Note: This library is still under development and may contain bugs. Feel free to report issues or suggest features in our Discord!
 
+## > Yukufy Projects
+### - [Yukufy Bot Example](https://github.com/lNazuna/Yukufy-Bot-Example) by **lNazuna**
+
+### - [Yoruka](#) by **CroneGamesPlays**
+
 ## 🛠️ Installation
 
 Install `Yukufy` via npm:
@@ -105,9 +110,13 @@ To play a song, specify the song name and the voice channel.
 
 ```js
 const channel = interaction.member.voice.channel;
-const query = "NEFFEX Michael Jordan";
+const song = "NEFFEX Michael Jordan";
 const source = "spotify"; // or "soundcloud"
-await yukufy.play(query, channel, source);
+const music = await yukufy.play(song, channel, source, {
+    member: interaction.member,
+    textChannel: interaction.channel,
+    guildId: interaction.guild.id
+  });
 ```
 
 ### Control the Player
